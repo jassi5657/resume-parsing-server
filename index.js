@@ -16,17 +16,18 @@ app.use(cors({
     credentials: true,
 }));
 
-const uploadDir = 'uploads';
+const uploadDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
 }
+
+const upload = multer({ dest: '/tmp/uploads/' });
 
 app.get("/",(req,res)=>{
   res.send("server is running")
 })
 
 // Set up multer for file uploads
-const upload = multer({ dest: '/uploads' });
 
 // Required skills to check
 // const requiredSkills = ['Java', 'Node', 'Python', 'C/C++'];
