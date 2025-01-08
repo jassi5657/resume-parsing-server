@@ -11,6 +11,10 @@ const _ = require('lodash');
 
 app.use(cors());
 
+app.get("/",(req,res)=>{
+  res.send("server is running")
+})
+
 // Set up multer for file uploads
 const upload = multer({ dest: 'uploads/' });
 
