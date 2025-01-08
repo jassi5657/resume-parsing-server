@@ -11,7 +11,7 @@ const _ = require('lodash');
 
 app.use(cors(
   {
-      origin: "*",
+      origin: "https://resume-parsing-client.vercel.app",
       methods: ["POST", "GET"],
       credentials: true
   }
