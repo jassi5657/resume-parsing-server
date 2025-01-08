@@ -9,14 +9,24 @@ const app = express();
 const port = 5000;
 const _ = require('lodash');
 
-app.use(cors());
+app.use(express.json());
+app.use(cors({
+    origin: "https://resume-parsing-client.vercel.app",
+    methods: ["POST", "GET"],
+    credentials: true,
+}));
+
+const uploadDir = 'uploads';
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+}
 
 app.get("/",(req,res)=>{
   res.send("server is running")
 })
 
 // Set up multer for file uploads
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: '/uploads' });
 
 // Required skills to check
 // const requiredSkills = ['Java', 'Node', 'Python', 'C/C++'];
